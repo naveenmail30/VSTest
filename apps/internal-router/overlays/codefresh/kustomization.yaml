@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: codefresh
 resources:
 - ../../base
+- ingress.yaml

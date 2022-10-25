@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: codefresh-internal-router-ingress
+  namespace: codefresh
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: internal-router
+            port:
+              number: 80
+        path: /webhooks
+        pathType: Prefix
+      - backend:
+          service:
+            name: internal-router
+            port:
+              number: 80
+        path: /workflows
+        pathType: Prefix
+      - backend:
+          service:
+            name: internal-router
+            port:
+              number: 80
+        path: /app-proxy
+        pathType: Prefix
